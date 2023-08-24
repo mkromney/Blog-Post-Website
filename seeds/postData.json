@@ -2,19 +2,19 @@
  {
    "title": "Why is MVC so important",
    "description": "About MVC",
-   "posted_by": "Sal",
-   "date_created":""
+   "posted_by": "Sal"
+   
  },
  {
   "title": "Why is ORM so important",
   "description": "About ORM",
-  "posted_by": "Sal",
-  "date_created":""
+  "posted_by": "Larantino"
+  
  },
  {
  "title": "Why is Github so important",
  "description": "About Github",
- "posted_by": "Sal",
- "date_created":""
+ "posted_by": "Sal"
+ 
  }
 ]
