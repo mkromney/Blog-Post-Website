@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Your Posts, {{name}}</h2>
+    <h2>{{name}}'s Page</h2>
   </div>
 </div>
 
@@ -30,7 +30,11 @@
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.name}}{{post.description}}{{post.date_created}}</a></h4>
+        <h2>
+      <a href="/post/{{post.id}}">{{post.name}}</a>
+      <p href="/post/{{post.id}}">{{post.description}}</p>
+    </h2>
+    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
