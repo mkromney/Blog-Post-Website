@@ -1,4 +1,4 @@
-// THI IS AN EXAMPLE
+// THIS IS AN EXAMPLE
 
 const router = require('express').Router();
 const { Post, User } = require('../models');
