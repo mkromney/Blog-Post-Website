@@ -31,12 +31,16 @@
     <div class="row mb-2">
       <div class="col-md-8">
         <h2>
-      <a href="/post/{{post.id}}">{{post.name}}</a>
-      <p href="/post/{{post.id}}">{{post.description}}</p>
-    </h2>
+<!--  <a href="/post/{{post.id}}">{{post.name}}</a>
+      <p href="/post/{{post.id}}">{{post.description}}</p>  -->
+
+        <a>{{post.name}}</a>
+        <p>{{post.description}}</p>
+      </h2>
     <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
       </div>
       <div class="col-md-4">
+        <button class="button btn btn-sm edit-post-button btn-danger" type="submit">EDIT</button>
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
       </div>
     </div>
@@ -46,3 +50,4 @@
 </div>
 
 <script src="./js/profile.js"></script>
+
