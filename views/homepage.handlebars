@@ -3,13 +3,13 @@
 <div class="row mb-4 post">
   <div class="col-md-5">
     <h2>
+      {{!-- the lines below can be used to make posts clickable to /post/:id --}}
 <!--  <a href="/post/{{post.id}}">{{post.name}}</a>
       <p href="/post/{{post.id}}">{{post.description}}</p>  -->
-
       <a>{{post.name}}</a>
       <p>{{post.description}}</p>
     </h2>
-    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+    <p>Created by {{user.name}} on {{format_date post.date_created}}</p>
   </div>
 </div>
 {{/each}}

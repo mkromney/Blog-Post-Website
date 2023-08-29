@@ -1,3 +1,4 @@
+// Creates router objects, defines routes, and exports the router for use in other parts of the application. //
 const router = require('express').Router();
 
 const apiRoutes = require('./api');

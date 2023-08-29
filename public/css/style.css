@@ -23,6 +23,7 @@ header, .project:not(:last-child) {
   margin-left: -5px;
 }
 
-.hidden {
+/* in case you want to have a hidden class of pop up buttons: */
+/* .hidden {
   display: none;
-}
+} */

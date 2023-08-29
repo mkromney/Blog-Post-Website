@@ -1,4 +1,4 @@
-//new post form handler
+// Handler for creating new posts. //
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -22,7 +22,7 @@ const newFormHandler = async (event) => {
   }
 };
 
-//delete post handler
+// Handler for deleting posts. //
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
@@ -46,3 +46,5 @@ document
 document
   .querySelector('.post-list')
   .addEventListener('click', delButtonHandler);
+
+  // This code is modeled after the miniproject for module 14. //

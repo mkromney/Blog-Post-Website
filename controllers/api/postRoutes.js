@@ -1,11 +1,13 @@
+// Handles the routes for the posts model. //
 const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Creates new posts. //
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
-      // spread operator ...
+      // spread operator: ... //
       ...req.body,
       user_id: req.session.user_id,
     });
@@ -16,37 +18,35 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-
+// Handles routing for editing a post. Works in Insomnia, haven't figured out how to make it a dynamic feature. //
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const editPost = await Post.update(
-      req.body,
-      {where: {id: req.params.id}}
-    )
+    const editPost = await Post.update(req.body, {
+      where: { id: req.params.id },
+    });
     if ([editPost] === 0) {
-      res.status(404).end()
+      res.status(404).end();
+    } else {
+      res.status(200).json({ message: 'Updated Post' });
     }
-      else { res.status(200).json({message: "Updated Post"})
-      };
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// Allows post name and description to be updated via direct JSON in insomnia only.  //
 router.get('/:id', withAuth, async (req, res) => {
-  res.render('post/:id')
+  res.render('post/:id');
   try {
-    const viewPost = await Post.update(
-      req.body,
-      {where: {id: req.params.id}}
-    )
+    const viewPost = await Post.update(req.body, {
+      where: { id: req.params.id },
+    });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-
-
+// Route that handles post deletion. //
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
@@ -55,12 +55,10 @@ router.delete('/:id', withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
     });
-
     if (!postData) {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
-
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);

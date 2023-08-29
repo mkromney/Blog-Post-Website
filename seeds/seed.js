@@ -1,3 +1,4 @@
+// Seeds the database for testing. //
 const sequelize = require('../config/connection');
 const { User, Post } = require('../models');
 
