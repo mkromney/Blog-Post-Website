@@ -1,33 +1,33 @@
-// Handles the routes for the posts model. //
+// Handles the routes for the comments model. //
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// Creates new posts. //
-router.post('/', withAuth, async (req, res) => {
+// Creates new comments. //
+router.comment('/', withAuth, async (req, res) => {
   try {
-    const newPost = await Post.create({
+    const newComment = await Comment.create({
       // spread operator: ... //
       ...req.body,
       user_id: req.session.user_id,
     });
 
-    res.status(200).json(newPost);
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-// Handles routing for editing a post. Works in Insomnia, haven't figured out how to make it a dynamic feature. //
+// Handles routing for editing a comment. Works in Insomnia, haven't figured out how to make it a dynamic feature. //
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const editPost = await Post.update(req.body, {
+    const editComment = await Comment.update(req.body, {
       where: { id: req.params.id },
     });
-    if ([editPost] === 0) {
+    if ([editComment] === 0) {
       res.status(404).end();
     } else {
-      res.status(200).json({ message: 'Updated Post' });
+      res.status(200).json({ message: 'Updated comment' });
     }
   } catch (err) {
     res.status(500).json(err);
@@ -35,9 +35,9 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 router.get('/:id', withAuth, async (req, res) => {
-  res.render('post/');
+  res.render('comment/');
   try {
-    const viewPost = await Post.update(req.body, {
+    const viewComment = await Comment.update(req.body, {
       where: { id: req.params.id },
     });
   } catch (err) {
@@ -45,20 +45,20 @@ router.get('/:id', withAuth, async (req, res) => {
   }
 });
 
-// Route that handles post deletion. //
+// Route that handles comment deletion. //
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.destroy({
+    const commentData = await Comment.destroy({
       where: {
         id: req.params.id,
         user_id: req.session.user_id,
       },
     });
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
+    if (!commentData) {
+      res.status(404).json({ message: 'No comment found with this id!' });
       return;
     }
-    res.status(200).json(postData);
+    res.status(200).json(commentData);
   } catch (err) {
     res.status(500).json(err);
   }

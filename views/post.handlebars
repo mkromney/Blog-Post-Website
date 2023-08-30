@@ -1,13 +1,31 @@
-{{!-- Displays the selected post by id and allows the user to edit it or delete it. --}}
+{{! Displays the selected post by id and allows the user to edit it or delete it. }}
 
-{{#each posts as |post| }}
-<div class="row mb-4 post">
-  <div class="col-md-5">
-    <h2>
-      <a href="/post/{{post.id}}">{{post.name}}</a>
-      <p href="/post/{{post.id}}">{{post.description}}</p>
-    </h2>
-    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+{{#each posts as |post|}}
+  <div class='row mb-4 post'>
+    <div class='col-md-5'>
+      <h2>
+        <a href='/post/{{post.id}}'>{{post.name}}</a>
+        <p href='/post/{{post.id}}'>{{post.description}}</p>
+
+      </h2>
+      <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+    </div>
   </div>
-</div>
 {{/each}}
+
+<article>
+  <form method='POST' action='/post/'>
+    <div class='input-field'>
+      <label>Comment:</label>
+      <textarea
+        type='text'
+        name='comment'
+        rows='20'
+        placeholder="Add your comment"
+      ></textarea>
+    </div>
+    <input type='hidden' name='article-id' value='{{article.id}}' />
+    <button type='submit'>Add Comment</button>
+  </form>
+</article>
+

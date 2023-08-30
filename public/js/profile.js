@@ -22,6 +22,24 @@ const newFormHandler = async (event) => {
   }
 };
 
+// // Handler for editing posts. //
+// const editButtonHandler = async (event) => {
+//   if (event.target.hasAttribute('edit-id')) {
+//     const id = event.target.getAttribute('edit-id');
+
+//     const response = await fetch(`/api/posts/${id}`, {
+//       method: 'PUT',
+//     });
+
+//     if (response.ok) {
+//       document.location.replace('/profile');
+//     } else {
+//       alert('Failed to edit post');
+//     }
+//   }
+// };
+
+
 // Handler for deleting posts. //
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
@@ -42,6 +60,10 @@ const delButtonHandler = async (event) => {
 document
   .querySelector('.new-post-form')
   .addEventListener('submit', newFormHandler);
+
+// document
+//   .querySelector('.edit-post-form')
+//   .addEventListener('click', editButtonHandler);
 
 document
   .querySelector('.post-list')
